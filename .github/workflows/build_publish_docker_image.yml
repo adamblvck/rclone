@@ -1,4 +1,4 @@
-name: Build and publish develop image
+name: Docker beta build
 
 on:
     push:
@@ -12,9 +12,11 @@ jobs:
         name: Build image job
         steps:
             - name: Checkout master
-              uses: actions/checkout@master
+              uses: actions/checkout@v2
+              with:
+                fetch-depth: 0
             - name: Build and publish image
-              uses: ilteoood/docker_buildx@master
+              uses: ilteoood/docker_buildx@439099796bfc03dd9cedeb72a0c7cb92be5cc92c
               with:
                 tag: test-beta
                 imageName: rclone/rclone
